@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Theme tokens — light is default, .dark on <html> flips the neutrals. */
+  :root {
+    --ink: #111111;
+    --cream: #fffbef;
+    --paper: #ffffff;
+  }
+  .dark {
+    --ink: #f2ecd9;
+    --cream: #141318;
+    --paper: #211f2b;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-cream font-mono text-ink;
+  }
+}
+
+@layer components {
+  /* Cream page with neubrutalist radial dot grid */
+  .dot-grid {
+    background-color: var(--cream);
+    background-image: radial-gradient(var(--ink) 1.2px, transparent 1.2px);
+    background-size: 26px 26px;
+  }
+
+  /* Chunky bordered button with hard offset shadow; presses on :active */
+  .btn-brutal {
+    @apply inline-flex items-center justify-center gap-2 border-3 border-ink bg-paper px-5 py-3 font-display uppercase tracking-tight shadow-hard transition-transform;
+  }
+  .btn-brutal:active {
+    @apply translate-x-1 translate-y-1 shadow-none;
+  }
+
+  /* Rotated neubrutalist badge/label */
+  .badge-brutal {
+    @apply inline-flex items-center gap-1 border-3 border-ink bg-paper px-2 py-0.5 font-mono text-xs font-bold uppercase;
+  }
+}
